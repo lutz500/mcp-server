@@ -1,6 +1,5 @@
-# MCP Server Template
-
-## Overview
+# 🛠 MCP Server Template
+## 🚀 Features
 This repository is a **starter template** for building a **FastMCP server** with Python.  
 It uses:
 
@@ -11,46 +10,41 @@ It uses:
 
 The template helps you quickly start a production-ready MCP server with **environment-based configuration**, **optional dev tools**, and **Docker deployment**.
 
-## Installation
-
+## ⚡Quick Start
 ### Local Development
-
-#### 1. Create and activate venv
-
 ```bash
+
+# 1. Create venv
 uv venv
-# Windows
-.\.venv\Scripts\activate
-# macOS/Linux
-source .venv/bin/activate
-```
-#### 2. Install dependencies
-```bash
-uv sync        # installs both prod + dev dependencies
-```
 
-#### 3. Run server
-```bash
+# 2. Activate venv
+## Windows
+.\.venv\Scripts\activate
+## macOS/Linux
+source .venv/bin/activate
+
+# 3. Install dependencies  (prod + dev)
+uv sync
+
+# 4. Run server
 uv run main.py
 ```
-
-### Docker Deployment
-#### 1. Build image
+----
+### 🐳 Docker Deployment
+#### Build image
 ```bash
 docker build -t mcp-server .
 ```
-#### 2. Run container
-With docker run:
+#### Run **container**
 ```bash
 docker run --env-file .env -p 8000:8000 mcp-server
 ```
-Or with Docker Compose:
-
+Or with **Docker Compose**:
 ```bash
 docker-compose up
 ```
 
-## Configuration
+## ⚙️ Configuration
 The server get configured using environment variables.  
 Create a `.env` file in the root directory or set them in the `docker-compose.yaml`
 
