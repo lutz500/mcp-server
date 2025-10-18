@@ -65,3 +65,45 @@ Behavior:
 - Class defaults are used if neither is set
 
 There are logs shown if certain variables are not set!
+
+##  💻  Usage
+Idea: Tools, Resources and promts are outsourced into the /src/tools folder. Here tools are clustered thematically.
+
+### Add tool
+#### 1. Create a new file if need:
+```bash
+touch /src/tools/<tool-file>.py
+```
+
+#### 2. Add logic:
+Add tool logic to `<tool-file>.py`
+```python
+from utils.logger import logger
+from core.server import mcp
+
+@mcp.tool
+def add(x: int, y: int) -> int:
+    """Add two numbers."""
+    logger.info(f"Adding {x} and {y}")
+    return x + y
+```
+
+#### 3. Register tool
+To register tool add it as import to `main.py`
+```python
+...
+# Import tools to register them with the MCP instance
+import tools.math  # noqa F401
+import tools.<tool.py> # <- add here to register
+
+
+def main():
+    mcp.run(
+        transport=settings.TRANSPORT,
+        host=settings.SERVER_HOST,
+        port=settings.SERVER_PORT,
+        show_banner=False,
+    )
+
+...
+```
