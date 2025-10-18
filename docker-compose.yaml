@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  mcp:
+    build: .
+    container_name: mcp_server
+    ports:
+      - "8000:8000"
+    environment:
+      # Server configuration
+      - SERVER_NAME=MCP Server
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=8000
+      - TRANSPORT=http
+
+      # Other environment variables
+      - INTERNAL_API_URL=http://internal.dev.aiperia.io/internal-api/api/v1
+      
+    restart: unless-stopped
+
+volumes:
+  mcp_venv:
